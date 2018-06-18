@@ -1,15 +1,15 @@
 package com.meireles.servlet;
 
-@javax.faces.bean.ManagedBean
+@javax.faces.bean.ManagedBean(name="ola")
 public class OlaBean {
 	
-	private String nome;
-	private String sobreNome;
+	private String nome = "Bruno" ;
+	private String sobrenome = "Meireles";
 	private String nomeCompleto;
 	
-	public void dizerAlo() {
+	public void dizerOla() {
 		this.nomeCompleto = this.nome.toUpperCase()+" "+
-				this.sobreNome.toUpperCase();
+				this.sobrenome.toUpperCase();
 	}
 
 	public String getNome() {
@@ -20,16 +20,17 @@ public class OlaBean {
 		this.nome = nome;
 	}
 
-	public String getSobreNome() {
-		return sobreNome;
+	public String getSobrenome() {
+		return sobrenome;
 	}
 
-	public void setSobreNome(String sobreNome) {
-		this.sobreNome = sobreNome;
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
 
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
+
 
 }

@@ -6,13 +6,14 @@
 	</h:head>
 	<h:body>
 		<h:form>
-			<h1>Olá</h1>
-			Nome: <h:inputText />
+			<h1>Olá #{ola.nomeCompleto}</h1>
+			Nome: <h:inputText value="#{ola.nome}"/>
 			<br/>
-			Sobrenome: <h:inputText />
+			Sobrenome: <h:inputText value="#{ola.sobrenome}"/>
 			<br/>
 			
-			<h:commandButton value="Dizer olá" />
+			<h:commandButton value="Dizer olá"
+			action="#{ola.dizerOla}" />
 		</h:form>
 	</h:body>
 </html>

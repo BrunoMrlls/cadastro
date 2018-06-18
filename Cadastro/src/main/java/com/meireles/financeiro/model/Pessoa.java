@@ -20,6 +20,8 @@ public class Pessoa implements Serializable {
 	@Column(length=60, nullable=false)
 	private String nome;
 	
+	public Pessoa() {}
+	
 	public Long getId() {
 		return id;
 	}

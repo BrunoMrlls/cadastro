@@ -28,7 +28,7 @@ public class Lancamento implements Serializable{
 	private Long id;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="pess_id")
+	@JoinColumn(name="pessoa_id")
 	private Pessoa pessoa;
 	
 	@Column(length=80, nullable=false)
@@ -49,6 +49,7 @@ public class Lancamento implements Serializable{
 	@Column(name="dtpag", nullable=true)
 	private Date dtPag;
 	
+	public Lancamento() {}
 	
 	public Long getId() {
 		return id;
