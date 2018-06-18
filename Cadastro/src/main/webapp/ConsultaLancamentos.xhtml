@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:f="http://xmlns.jcp.org/jsf/core"
+				xmlns:h="http://xmlns.jcp.org/jsf/html"
+				xmlns:ui="http://xmlns.jcp.org/jsf/facelets" >
+	<f:metadata>
+		<f:viewAction action="#{consultaLancamentoBean.consultar}"></f:viewAction>
+	</f:metadata>
+	<ui:define name="titulo">Consulta de Lançamentos</ui:define>
+	<ui:define name="subtitulo">Consulta de Lançamentos</ui:define>		
+	
+	<ui:define name="corpo">
+		<h:form id="frm">
+			<h:dataTable value="#{consultaLancamentoBean.lancamentos}"
+			var="lanc" border="1" cellspacing="0" cellpadding="2">
+			
+				<h:column >
+					<f:facet name="header">
+						<h:outputText value="Pessoa"></h:outputText>
+					</f:facet>					
+					<h:outputText class="textDataTable" value="#{lanc.pessoa.nome}"></h:outputText>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descrição"></h:outputText>
+					</f:facet>					
+					<h:outputText class="textDataTable" value="#{lanc.descricao}"></h:outputText>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tipo"></h:outputText>
+					</f:facet>					
+					<h:outputText class="textDataTable" value="#{lanc.tpLanc}"></h:outputText>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Valor"></h:outputText>
+					</f:facet>					
+					<h:outputText class="textDataTable" value="#{lanc.vrLanc}"></h:outputText>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Data de Vencimento"></h:outputText>
+					</f:facet>					
+					<h:outputText class="textDataTable" value="#{lanc.dtVenc}"></h:outputText>
+				</h:column>
+														
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Data de Pagamento"></h:outputText>
+					</f:facet>					
+					<h:outputText class="textDataTable" value="#{lanc.dtPag}"></h:outputText>
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
