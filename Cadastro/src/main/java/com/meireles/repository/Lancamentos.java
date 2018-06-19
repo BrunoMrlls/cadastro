@@ -16,7 +16,12 @@ public class Lancamentos implements Serializable{
 	public Lancamentos(EntityManager manager) {
 		this.manager = manager;
 	}
-	
+
+
+	public void adicionar(Lancamento lancamento){
+		this.manager.persist(lancamento);
+	}
+
 	public List<Lancamento> todos(){
 		TypedQuery<Lancamento> qry = manager.createQuery(
 				"from Lancamento", Lancamento.class);
