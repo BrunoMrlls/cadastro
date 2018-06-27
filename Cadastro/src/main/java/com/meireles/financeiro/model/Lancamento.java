@@ -1,5 +1,7 @@
 package com.meireles.financeiro.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -15,6 +17,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -30,21 +36,27 @@ public class Lancamento implements Serializable{
 	@ManyToOne(optional=false)
 	@JoinColumn(name="pessoa_id")
 	private Pessoa pessoa;
-	
+
+	@NotEmpty
+	@Size(max=80)
 	@Column(length=80, nullable=false)
 	private String descricao;
-	
+
+	@NotNull
+	@DecimalMin("0")
 	@Column(precision=10,scale=2, nullable=false)
 	private BigDecimal vrLanc;
-	
+
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(nullable=false)
 	private TipoLancamento tpLanc;
-	
+
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name="dtvenc", nullable=false)
 	private Date dtVenc;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name="dtpag", nullable=true)
 	private Date dtPag;
@@ -145,11 +157,8 @@ public class Lancamento implements Serializable{
 		if (tpLanc != other.tpLanc)
 			return false;
 		if (vrLanc == null) {
-			if (other.vrLanc != null)
-				return false;
-		} else if (!vrLanc.equals(other.vrLanc))
-			return false;
-		return true;
-	}
+            return other.vrLanc == null;
+		} else return vrLanc.equals(other.vrLanc);
+    }
 	
 }

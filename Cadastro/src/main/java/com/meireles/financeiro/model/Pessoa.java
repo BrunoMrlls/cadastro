@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="pess")
@@ -16,7 +18,9 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
+	@NotNull
+    @Size(max = 60)
 	@Column(length=60, nullable=false)
 	private String nome;
 	
@@ -59,11 +63,8 @@ public class Pessoa implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		return true;
-	}
+            return other.nome == null;
+		} else return nome.equals(other.nome);
+    }
 	
 }

@@ -22,8 +22,8 @@ public class OlaMundo extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, 
-			HttpServletResponse response) throws ServletException, 
-			IOException {
+			HttpServletResponse response) throws
+            IOException {
 
 		PrintWriter out = response.getWriter();
 		out.println(HTML_OLA_MUNDO);

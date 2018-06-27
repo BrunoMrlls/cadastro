@@ -1,7 +1,9 @@
 package com.meireles.repository;
 
+import com.meireles.financeiro.model.Lancamento;
 import com.meireles.financeiro.model.Pessoa;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.io.Serializable;
@@ -12,6 +14,7 @@ public class Pessoas implements Serializable {
     private static final long serialVersionUID = 1L;
     private EntityManager manager;
 
+    @Inject
     public Pessoas(EntityManager manager){
         this.manager = manager;
     }
@@ -25,4 +28,5 @@ public class Pessoas implements Serializable {
                 "from Pessoa", Pessoa.class );
         return qry.getResultList();
     }
+
 }

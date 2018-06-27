@@ -5,28 +5,28 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import com.meireles.financeiro.util.JpaUtil;
 import com.meireles.repository.Lancamentos;
 
-@ManagedBean
-@ViewScoped
+@Named
+@javax.faces.view.ViewScoped //do pcte view para funcionar o CDI Injection
 public class ConsultaLancamentoBean implements Serializable{
-	
+
+	@Inject
+	private Lancamentos lancamentosRepository;
+
 	private static final long serialVersionUID = 1L;
 	private List<Lancamento> lancamentos;
 	
 	public void consultar() {
-		EntityManager manager = JpaUtil.getEntityManager();
-		Lancamentos lancamentos = new Lancamentos(manager);
-		
-		this.lancamentos = lancamentos.todos();
-		
-		manager.close();
+		this.lancamentos = this.lancamentosRepository.todos();
 	}
-	
+
 	public List<Lancamento> getLancamentos(){
 		return lancamentos;
 	}

@@ -29,7 +29,13 @@ header{
 	color: #fff;
 	box-shadow: 0px 2px 2px #ccc;		
 }
-
+.ajax-status {
+	position: fixed;
+	top: 85px;
+	right: 10px;
+	width: 35px;
+	height: 35px
+}
 #conteudo{
 	padding: 0px 8px;
 }
