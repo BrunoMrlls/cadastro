@@ -1,5 +1,8 @@
-package com.meireles.financeiro.model;
+package com.meireles.finaneiro.controller;
 
+import com.meireles.financeiro.model.Lancamento;
+import com.meireles.financeiro.model.Pessoa;
+import com.meireles.financeiro.model.TipoLancamento;
 import com.meireles.repository.Lancamentos;
 import com.meireles.repository.Pessoas;
 import com.meireles.service.CadastroLancamentos;
@@ -7,9 +10,7 @@ import com.meireles.service.NegocioException;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -34,6 +35,9 @@ public class CadastroLancamentoBean implements Serializable {
 
     public void prepararCadastro(){
         this.todasPessoas = this.pessoas.todas();
+        if (this.lancamento == null) {
+            this.lancamento = new Lancamento();
+        }
     }
 
     public void salvar(){
@@ -52,7 +56,6 @@ public class CadastroLancamentoBean implements Serializable {
             FacesMessage mensagem = new FacesMessage(e.getMessage());
             mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
             context.addMessage(null, mensagem);
-
         }
     }
 

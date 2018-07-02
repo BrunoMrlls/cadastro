@@ -9,6 +9,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import com.meireles.financeiro.model.Lancamento;
+import com.meireles.financeiro.model.Pessoa;
+import com.meireles.service.NegocioException;
 
 public class Lancamentos implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -21,8 +23,8 @@ public class Lancamentos implements Serializable{
 	}
 
 
-	public void adicionar(Lancamento lancamento){
-	    this.manager.persist(lancamento);
+	public void salvar(Lancamento lancamento) throws NegocioException {
+	    guardar(lancamento);
 	}
 
 	public List<Lancamento> todos(){
@@ -31,6 +33,18 @@ public class Lancamentos implements Serializable{
 		
 		return qry.getResultList();
 	}
+
+	public Lancamento findById(Long id){
+        return manager.find(Lancamento.class, id);
+	}
+
+	public Lancamento guardar(Lancamento lancamento){
+	    return this.manager.merge(lancamento);
+    }
+
+    public void remove(Lancamento lancamento){
+	    this.manager.remove(lancamento);
+    }
 
     public List<String> descricoesQueContem(String s){
         TypedQuery<String> qry = manager.createQuery(

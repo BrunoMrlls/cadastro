@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -19,9 +20,13 @@
             <h:outputText value="" />
         </f:facet>
     </p:ajaxStatus>
-	<h1 class="headertop">
-		<ui:insert name="subtitulo" >Sistema Financeiro</ui:insert>
-	</h1>
+    <div style="float: right; margin-right: 20px; margin-top: 8px; color: #f2f2f2">
+        Olá #{usuario.nome}!
+    </div>
+    <h1 class="headertop">
+        <ui:insert name="subtitulo" >Sistema Financeiro</ui:insert>
+    </h1>
+
 	<h:form>
 		<p:menubar style="margin-top: -20px; margin-bottom: 20px">
 			<p:submenu label="Cadastros">
@@ -35,7 +40,7 @@
 				action="/ConsultaLancamentos?faces-redirect=true"/>
 			</p:submenu>
 			<p:submenu label="Sistema">
-				<p:menuitem value="Sair" />
+				<p:menuitem value="Sair" action="#{loginBean.logout}"/>
 			</p:submenu>
 		</p:menubar>
 	</h:form>

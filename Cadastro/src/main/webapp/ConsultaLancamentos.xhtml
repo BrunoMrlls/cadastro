@@ -3,15 +3,17 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" >
+                xmlns:p="http://primefaces.org/ui">
 	<f:metadata>
 		<f:viewAction action="#{consultaLancamentoBean.consultar}"></f:viewAction>
 	</f:metadata>
 	<ui:define name="titulo">Consulta de Lançamentos</ui:define>
-	<ui:define name="subtitulo">Consulta de Lançamentos</ui:define>		
-	
+	<ui:define name="subtitulo">Consulta de Lançamentos</ui:define>
+
 	<ui:define name="corpo">
 		<h:form id="frm">
+            <p:messages showDetail="false" showSummary="true"
+                        autoUpdate="true" />
 			<p:dataTable value="#{consultaLancamentoBean.lancamentos}"
 			var="lanc" border="1" cellspacing="0" cellpadding="2"
             paginator="true" rows="10" paginatorPosition="bottom">
@@ -47,6 +49,19 @@
                                            timeZone="America/Sao_Paulo" />
                     </h:outputText>
 				</p:column>
+
+				<p:column>
+					<p:button icon="ui-icon-pencil" title="Editar"
+							  outcome="/CadastroLancamento">
+						<f:param name="id" value="#{lanc.id}" />
+					</p:button>
+                    <p:commandButton icon="ui-icon-trash" title="Excluir" process="@this"
+                                     update="@form" action="#{consultaLancamentoBean.excluir}">
+                        <f:setPropertyActionListener value="#{lanc}"
+                                                     target="#{consultaLancamentoBean.lancamentoSelecionado}" />
+                    </p:commandButton>
+				</p:column>
+
 				
 			</p:dataTable>
 		</h:form>
