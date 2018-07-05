@@ -9,15 +9,39 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <failOnMissingWebXml>false</failOnMissingWebXml><!-- para nao dar erro no POM -->
 	</properties>
-	
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 	<dependencies>
+			<dependency>
+				<groupId>org.primefaces.themes</groupId>
+				<artifactId>all-themes</artifactId>
+				<version>1.0.10</version>
+			</dependency>
+			<dependency>
+				<groupId>org.primefaces.themes</groupId>
+				<artifactId>cupertino</artifactId>
+				<version>1.0.10</version>
+			</dependency>
             <!-- PrimeFaces (biblioteca de componentes) -->
-            <dependency>
-                <groupId>org.primefaces</groupId>
-                <artifactId>primefaces</artifactId>
-                <version>5.1</version>
-                <scope>compile</scope>
-            </dependency>
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>6.2</version>
+				<scope>compile</scope>
+			</dependency>
+            <!-- PrimeFaces (biblioteca de componentes) -->
+            <!--<dependency>-->
+                <!--<groupId>org.primefaces</groupId>-->
+                <!--<artifactId>primefaces</artifactId>-->
+                <!--<version>5.1</version>-->
+                <!--<scope>compile</scope>-->
+            <!--</dependency>-->
             <!--Não é possível injetar beans CDI em conversores JSF
             OmniFaces faz com que a injeção de depedências funcione em todas as instâncias anotadas com @FacesConverter-->
 			<!-- OmniFaces (utilitarios para JSF) -->

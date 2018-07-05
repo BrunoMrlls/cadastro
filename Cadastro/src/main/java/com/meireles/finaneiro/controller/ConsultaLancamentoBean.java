@@ -17,6 +17,7 @@ import com.meireles.financeiro.util.JpaUtil;
 import com.meireles.repository.Lancamentos;
 import com.meireles.service.CadastroLancamentos;
 import com.meireles.service.NegocioException;
+import org.primefaces.event.SelectEvent;
 
 @Named
 @javax.faces.view.ViewScoped //do pcte view para funcionar o CDI Injection
@@ -52,7 +53,6 @@ public class ConsultaLancamentoBean implements Serializable{
 			context.addMessage(null, mensagem);
 		}
 	}
-
 
 	public List<Lancamento> getLancamentos(){
 		return lancamentos;

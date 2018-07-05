@@ -24,7 +24,7 @@ public class LoginBean {
         if("admin".equals(this.nomeUsuario) && "1".equals(this.senha)){
             this.usuario.setNome(this.nomeUsuario);
             this.usuario.setDataLogin(new Date());
-            return "/ConsultaLancamentos?faces-redirect=true";
+            return "/Home?faces-redirect=true";
         } else {
             FacesMessage message = new FacesMessage(
                     "Usuário/Senha inválidos!");

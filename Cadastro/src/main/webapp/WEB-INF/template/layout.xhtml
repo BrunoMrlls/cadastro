@@ -28,20 +28,23 @@
     </h1>
 
 	<h:form>
+
 		<p:menubar style="margin-top: -20px; margin-bottom: 20px">
-			<p:submenu label="Cadastros">
-				<p:menuitem value="Pessoa"/>
-				<p:menuitem value="Lançamento"
+			<p:menuitem value="Início" action="/Home?faces-redirect=true"
+						icon="ui-icon-home" />
+			<p:submenu label="Cadastros" icon="ui-icon-plusthick ">
+				<p:menuitem value="Pessoa" icon="ui-icon-circle-plus"/>
+				<p:menuitem value="Lançamento" icon="ui-icon-circle-plus"
 				action="/CadastroLancamento?faces-redirect=true"/>
 			</p:submenu>
-			<p:submenu label="Consultas">
-				<p:menuitem value="Pessoa"/>
-				<p:menuitem value="Lançamento"
+
+			<p:submenu label="Consultas" icon="ui-icon-search ">
+				<p:menuitem value="Pessoa" icon="ui-icon-bookmark"/>
+				<p:menuitem value="Lançamento" icon="ui-icon-tag"
 				action="/ConsultaLancamentos?faces-redirect=true"/>
 			</p:submenu>
-			<p:submenu label="Sistema">
-				<p:menuitem value="Sair" action="#{loginBean.logout}"/>
-			</p:submenu>
+			<p:menuitem value="Sair" action="#{loginBean.logout}"
+						icon="ui-icon-quit"/>
 		</p:menubar>
 	</h:form>
 
